@@ -1,0 +1,9 @@
+div.nav-container
+    nav.site-nav(ng-repeat="navLink in navLinks")
+        a(href="navLink.url", ng-bind="navLink.name")
+        
+    a.nav-toggle
+        -var index = 1
+        each i in new Array(3)
+            span(class="line-#{index++}")
+        
