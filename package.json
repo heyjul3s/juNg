@@ -1,7 +1,7 @@
 {
   "name": "juNG",
   "version": "1.0.0",
-  "description": "Angular 1.X hipster stack starter kit because webpack is too mainstream.",
+  "description": "Angular 1.X starter with Jade, Stylus, es2015. Nothing fancy but just a little bit smancy.",
   "main": "\u001b ",
   "scripts": {
     "test": " "
@@ -17,6 +17,8 @@
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
     "browserify-ngannotate": "^2.0.0",
+    "bulk-require": "^0.2.1",
+    "bulkify": "^1.2.0",
     "del": "^2.2.0",
     "extend": "^3.0.0",
     "gulp": "^3.9.1",

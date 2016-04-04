@@ -11,7 +11,8 @@ module.exports = {
                 './app/partials/**/*.styl'
             ],
             js : [
-                './app/**/*/.js',
+                './app/**/**/*.js',
+                // './app/views/**/*.js',
                 '!./app/dist/*.js'
             ]
         },

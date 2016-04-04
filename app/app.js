@@ -2,7 +2,12 @@ require('angular');
 require('angular-ui-router');
 require('angular-sanitize');
 
-(function(window, angular){
+// import angular from 'angular';
+// import 'angular-ui-router';
+// import 'angular-sanitize';
+
+
+(function(){
     'use strict';
 
     angular.module('app', [
@@ -13,8 +18,8 @@ require('angular-sanitize');
         'app.filters'
     ]).config(appRoutes);
 
-    angular.module('app.services', []);
     angular.module('app.controllers', []);
+    angular.module('app.services', []);
     angular.module('app.filters', []);
 
     appRoutes.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
@@ -48,8 +53,8 @@ require('angular-sanitize');
                 views: {
                     'content@': {
                         templateUrl: 'views/home/home.html',
-                        controller: 'HomeController',
-                        controllerAs: 'HomeCtrl'
+                        controller: 'HomeController'
+                        // controllerAs: 'HomeCtrl'
                     }
                 }
             })
@@ -59,8 +64,8 @@ require('angular-sanitize');
                 views: {
                     'content@': {
                         templateUrl: 'views/about/about.html',
-                        controller: 'AboutController',
-                        controllerAs: 'AboutCtrl'
+                        controller: 'AboutController'
+                        // controllerAs: 'AboutCtrl'
                     }
                 }
             })
@@ -70,8 +75,8 @@ require('angular-sanitize');
                 views: {
                     'content@': {
                         templateUrl: 'views/contact/contact.html',
-                        controller: 'ContactController',
-                        controllerAs: 'ContactCtrl'
+                        controller: 'ContactController'
+                        // controllerAs: 'ContactCtrl'
                     }
                 }
             });
@@ -80,4 +85,4 @@ require('angular-sanitize');
             $urlRouterProvider.otherwise('/');
     }
 
-}(window, window.angular));
+}());

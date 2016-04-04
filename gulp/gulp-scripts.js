@@ -1,6 +1,9 @@
 (function(){
     'use strict';
 
+    //TODO: switch to import statements... but why?
+    //TODO: add source maps
+
     var gulp            = require('gulp'),
         plumber         = require('gulp-plumber'),
         gutil           = require('gulp-util'),
@@ -11,7 +14,8 @@
         stylish         = require('jshint-stylish'),
         browserify      = require('browserify'),
         ngAnnotate      = require('gulp-ng-annotate'),
-        // ngAnnotate      = require('browserify-ngannotate'),
+        bulk            = require('bulk-require'),
+        bulkify         = require('bulkify'),
         babelify        = require('babelify'),
         fs              = require('vinyl-fs'),
         buffer          = require('vinyl-buffer'),
@@ -35,23 +39,13 @@
             ));
     });
 
-
-    gulp.task('libs', function () {
-        return browserify()
-            .on('error', gutil.log)
-                .require(dependencies)
-                .bundle()
-                .pipe( gulpif( config.env === 'prod', source('./libs.min.js'), source('./libs.js') ) )
-                .pipe( gulp.dest(paths.dist.base) );
-            });
-
-
+    //TODO : debug false if production or deployment mode
     gulp.task('js', function () {
         return browserify({
                 entries: './app/app.js',
                 debug: true
-                // transform: [ ngAnnotate ]
             })
+            .transform( bulkify )
             .transform( 'babelify', {
                 presets: [ 'es2015' ]
             })
@@ -60,7 +54,6 @@
                     .pipe( gulpif( config.env === 'prod', source('./production.min.js'), source('./production.js') ) )
                     .pipe( buffer() )
                     .pipe( ngAnnotate() )
-                    // .pipe( gulpif( config.env === 'prod', ngAnnotate() ) )
                     .pipe( gulpif( config.env === 'prod', uglify() ) )
                     .pipe( gulp.dest(paths.dist.base) );
             });

@@ -27,10 +27,6 @@
 
 
     gulp.task('watch', function() {
-        gulp.watch('./package.json',[
-            'libs'
-        ]);
-
         gulp.watch(paths.watch.html, [
             'jade'
         ]);
@@ -48,7 +44,6 @@
 
     gulp.task('default', [
         'clean',
-        'libs',
         'build'
     ]);
 
@@ -58,7 +53,6 @@
         'jade',
         'stylus',
         'autoprefixer',
-        'libs',
         'js',
         'jshint'
     ]);
@@ -69,7 +63,6 @@
         'jade',
         'stylus',
         'autoprefixer',
-        'libs',
         'js',
         'jshint',
         'image-min'
