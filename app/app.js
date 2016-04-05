@@ -2,10 +2,7 @@ require('angular');
 require('angular-ui-router');
 require('angular-sanitize');
 
-// import angular from 'angular';
-// import 'angular-ui-router';
-// import 'angular-sanitize';
-
+var bulk = require('bulk-require');
 
 (function(){
     'use strict';
@@ -54,7 +51,6 @@ require('angular-sanitize');
                     'content@': {
                         templateUrl: 'views/home/home.html',
                         controller: 'HomeController'
-                        // controllerAs: 'HomeCtrl'
                     }
                 }
             })
@@ -65,7 +61,6 @@ require('angular-sanitize');
                     'content@': {
                         templateUrl: 'views/about/about.html',
                         controller: 'AboutController'
-                        // controllerAs: 'AboutCtrl'
                     }
                 }
             })
@@ -76,7 +71,6 @@ require('angular-sanitize');
                     'content@': {
                         templateUrl: 'views/contact/contact.html',
                         controller: 'ContactController'
-                        // controllerAs: 'ContactCtrl'
                     }
                 }
             });
@@ -84,5 +78,7 @@ require('angular-sanitize');
             $locationProvider.html5Mode(true);
             $urlRouterProvider.otherwise('/');
     }
+
+    bulk(__dirname, ['views/**/*.js']);
 
 }());

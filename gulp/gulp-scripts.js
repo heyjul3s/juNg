@@ -1,9 +1,6 @@
 (function(){
     'use strict';
 
-    //TODO: switch to import statements... but why?
-    //TODO: add source maps
-
     var gulp            = require('gulp'),
         plumber         = require('gulp-plumber'),
         gutil           = require('gulp-util'),
@@ -21,6 +18,7 @@
         buffer          = require('vinyl-buffer'),
         source          = require('vinyl-source-stream'),
         uglify          = require('gulp-uglify'),
+        source          = require('gulp-sourcemaps'),
         //Gulp file import
         paths           = require('../gulp/gulp-paths.js'),
         config          = require('../gulp/gulp-config.js');
@@ -28,7 +26,6 @@
 
     var packageJson = require('../package.json'),
         dependencies = Object.keys(packageJson && packageJson.dependencies || {});
-
 
     gulp.task('jshint', function(){
         return gulp.src( paths.dev.js )
