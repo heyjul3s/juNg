@@ -18,7 +18,7 @@
         buffer          = require('vinyl-buffer'),
         source          = require('vinyl-source-stream'),
         uglify          = require('gulp-uglify'),
-        source          = require('gulp-sourcemaps'),
+        sourceMaps      = require('gulp-sourcemaps'),
         //Gulp file import
         paths           = require('../gulp/gulp-paths.js'),
         config          = require('../gulp/gulp-config.js');
@@ -37,6 +37,7 @@
     });
 
     //TODO : debug false if production or deployment mode
+    //TODO : include source maps for scripts
     gulp.task('js', function () {
         return browserify({
                 entries: './app/app.js',
